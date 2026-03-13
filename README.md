@@ -19,22 +19,22 @@ A full-stack SPA application `React and ASP.NET Core` template for useful work p
 
 **Install Development 4ga Boards project from RARgames repository:**
 
-`https://github.com/RARgames/4gaBoards`
+	`https://github.com/RARgames/4gaBoards`
 	
 **Clone 4gaBoardDailyWorkReview repository into a directory of your choice**
 
-`git clone https://github.com/Inferysp/4gaBoardDailyWorkReview.git`
+	`git clone https://github.com/Inferysp/4gaBoardDailyWorkReview.git`
 
 **_Install dependencies if needed_**
 
 **Set `ConnectionString:` for PostgreSQL database of 4ga Boards dev setup**
 
-`Host=127.0.0.1;Database=4gaBoards;Username=postgres`
+	`Host=127.0.0.1;Database=4gaBoards;Username=postgres`
 
 **Start the development server**
 
-`4gaDailyWorkReview.Server> dotnet run --launch-profile https`
+	`4gaDailyWorkReview.Server> dotnet run --launch-profile https`
 
 **Start the development client**
 
-`4gaDailyWorkReview.Client> npm run dev`
+	`4gaDailyWorkReview.Client> npm run dev`
