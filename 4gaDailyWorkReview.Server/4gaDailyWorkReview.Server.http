@@ -1,0 +1,34 @@
+@4gaDailyWorkReview.Server_HostAddress = http://localhost:5033
+
+GET {{_4gaDailyWorkReview.Server_HostAddress}}/cards
+
+###
+
+GET {{_4gaDailyWorkReview.Server_HostAddress}}/cards/1639186160234267723
+
+###
+
+GET {{_4gaDailyWorkReview.Server_HostAddress}}/cards/day/2025-12-20
+
+###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/cards/{id:long}
+
+###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/projects
+
+###
+
+@id=1643790978609317116
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/project/1643790978609317116
+
+###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/minimalapi/projects
+
+###
+//@id=1643790978609317116
+GET {{4gaDailyWorkReview.Server_HostAddress}}/minimalapi/project/1643790978609317116
+
+###
