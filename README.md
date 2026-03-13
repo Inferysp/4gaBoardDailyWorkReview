@@ -4,9 +4,9 @@
 ### Tech Stack
 
 >Client - **React.js, Vite.js, TailwindCss,  useState, useEffect, date-fns**
-Server - **.NET 8.0, EF Core, ASP NET Core, MediatR, Dapper** 
-Architecture - **DI, CQRS**
-Database - **PostgreSQL**
+>Server - **.NET 8.0, EF Core, ASP NET Core, MediatR, Dapper** 
+>Architecture - **DI, CQRS**
+>Database - **PostgreSQL**
 
 ### Description
 
