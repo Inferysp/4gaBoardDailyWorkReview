@@ -10,10 +10,10 @@ A full-stack SPA application `React and ASP.NET Core` template for useful work p
 - postgreSQL db mapped by `Entity Framework Core` tools.
 ### Development
 **Install Development 4ga Boards project from RARgames repository:**
-`https://github.com/RARgames/4gaBoards`
+	`https://github.com/RARgames/4gaBoards`
 	
 **Clone 4gaBoardDailyWorkReview repository into a directory of your choice**
-`git clone https://github.com/Inferysp/4gaBoardDailyWorkReview.git`
+    `git clone https://github.com/Inferysp/4gaBoardDailyWorkReview.git`
 
 **_Install dependencies if needed_**
 
