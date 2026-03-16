@@ -1,4 +1,4 @@
-import GridYsp from "../Grid/GridYsp";
+import GridYsp from "./Grid/GridYsp";
 
 function CardWorkReview({ name, desc, creator }){
 

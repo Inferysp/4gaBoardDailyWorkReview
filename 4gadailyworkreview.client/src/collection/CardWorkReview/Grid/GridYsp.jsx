@@ -1,6 +1,6 @@
-import ButtonYsp from '../Button/ButtonYsp.jsx';
-import LabelYsp from '../Label/LabelYsp.jsx';
-import Description from '../ParserCardDescription/Description.jsx';
+import ButtonYsp from '../../../Button/ButtonYsp.jsx';
+import LabelYsp from './Label/LabelYsp.jsx';
+import Description from '../../../ParserCardDescription/Description.jsx';
 function GridYsp({ name, desc, creator }) {
 
     return (
