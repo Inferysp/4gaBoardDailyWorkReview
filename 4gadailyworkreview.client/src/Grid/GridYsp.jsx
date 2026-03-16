@@ -1,5 +1,6 @@
 import ButtonYsp from '../Button/ButtonYsp.jsx';
 import LabelYsp from '../Label/LabelYsp.jsx';
+import Description from '../ParserCardDescription/Description.jsx';
 function GridYsp({ name, desc, creator }) {
 
     return (
@@ -11,7 +12,7 @@ function GridYsp({ name, desc, creator }) {
                 <LabelYsp text={name} />
             </div>
             <div className="box-content items-center col-start-2 col-end-3 row-span-3 ...">
-                <LabelYsp text={desc} />
+                <Description markdown={desc || 'Brak opisu'} />
             </div>
             <div className="col-end-4 row-start-3 ...">
                 <ButtonYsp name="Edit" />

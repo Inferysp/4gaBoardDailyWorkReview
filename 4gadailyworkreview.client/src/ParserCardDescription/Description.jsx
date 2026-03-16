@@ -1,7 +1,7 @@
 import { marked } from 'marked';
 
 function Description({ markdown }) {
-    var html = marked.(markdown, {
+    const html = marked(markdown, {
         breaks: true,
         gfm: true
     });
@@ -9,7 +9,7 @@ function Description({ markdown }) {
     return (
         <div
             className="description"
-            dangerouslySetInnerHTML={{ _html: html }}
+            dangerouslySetInnerHTML={{ __html: html }}
         />
     );
 }
