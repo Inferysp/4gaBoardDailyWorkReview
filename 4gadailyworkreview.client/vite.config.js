@@ -26,7 +26,7 @@ if (!fs.existsSync(certFilePath) || !fs.existsSync(keyFilePath)) {
         'dev-certs',
         'https',
         '--export-path',
-        certFilePath,
+        certFilePath,,
         '--format',
         'Pem',
         '--no-password',
