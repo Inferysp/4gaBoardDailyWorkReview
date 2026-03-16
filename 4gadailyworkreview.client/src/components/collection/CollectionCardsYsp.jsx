@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import CardWorkReview from '../CardWorkReview/CardWorkReview.jsx';
+import CardWorkReview from './CardWorkReview/CardWorkReview.jsx';
 import { format } from "date-fns";
 
 function CollectionCardsYsp({ day }) {

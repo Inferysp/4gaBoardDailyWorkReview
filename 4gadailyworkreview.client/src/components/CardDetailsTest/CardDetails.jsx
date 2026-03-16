@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Description from "../ParserCardDescription/Description.jsx";
 
 function CardDetails({ cardId }) {
     const [card, setCard] = useState(null);
@@ -28,7 +29,7 @@ function CardDetails({ cardId }) {
     return (
         <div>
             <h1>{card.name}</h1>
-            <p>Opis: {card.description || 'Brak opisu'}</p>
+            <Description markdown={card.description || 'Brak opisu'} />
             <small>Utworzono: {new Date(card.createdAt).toISOString()}</small>
         </div>
     );

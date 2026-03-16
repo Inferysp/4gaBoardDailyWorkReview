@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CardDetails  from "../CardDetails/CardDetails.jsx"
+import CardDetails  from "../CardDetailsTest/CardDetails.jsx"
 
 function Btn({ cardId }) {
     const [trigger, setTrigger] = useState(false);

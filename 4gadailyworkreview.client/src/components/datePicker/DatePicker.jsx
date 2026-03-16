@@ -7,7 +7,7 @@ export default function DatePicker({date, onDateChange }) {
     const handleDateChange = (e) => onDateChange(parseISO(e.target.value));
 
     return (
-        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+        <div className="p-4">
             <button onClick={handlePrev}>←</button>
             <input
                 type="date"
