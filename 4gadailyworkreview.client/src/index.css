@@ -68,3 +68,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.description h1::before {
+    content: "# ";
+    color: #999;
+}
+
+.description p::after {
+    content: "";
+    display: block;
+    margin-bottom: 1rem;
+}
