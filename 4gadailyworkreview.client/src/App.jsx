@@ -7,22 +7,23 @@ function App() {
     const [selectedDate, setSelectedDate] = useState(new Date());
 
     return (
-        <div>
-            <div className="MenuBar relative static text-center content-center box-border z-0 top-0 width-100 h-20 bg-gradient-to-l from-transparent to-slate-800">
+        <div className="app">
+            <div className="menubar">
                 <div class="flex justify-between ...">
-                    <div className="p-4">
+                    <div className=" text-slate-300 font-bold text-shadow-lg p-4">
                         <h2>4gaDWR</h2>
                     </div>
-                    <div className="p-4">
+                    <div className="font-bold text-lg text-gray-800 p-4">
                         <h2>4gaBoard Daily Work Review</h2>
                     </div>
-                    <div className="p-4">
-                        <p>&copy; 2026 INFERYSP</p>
+                    <div className=" p-4">
+                        <h2>{new Date().toLocaleString()}</h2>
                     </div>
                 </div>
             </div>
-            <div className="body bg-slate-800">
-                <div className="statisticBar z-1 mx-100 left-0 bg-slate-200 p-7">
+
+            <div className="body">
+                <div className="bodycolumn">
                     <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
                 <div className="grid grid-cols-1 gap-6">
                     <CollectionCardsYsp day={selectedDate} />
@@ -30,9 +31,13 @@ function App() {
                 <Btn cardId="1699997500410169099" />
                 </div>
             </div>
-            <div className="footer bg-slate-800">
-                <div class="flex justify-between ...">asdad</div>
+
+            <div className="footer">
+                <div className="p-4">
+                    <p>&copy; 2026 INFERYSP</p>
+                </div>
             </div>
+
         </div>
     );
     

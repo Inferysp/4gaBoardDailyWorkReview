@@ -35,7 +35,7 @@ function CollectionCardsYsp({ day }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div>
+        <div className="listcontainer">
             <ul>
                 {data.map(item => (
                     <li key={item.id}>

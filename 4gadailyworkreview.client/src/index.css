@@ -1,11 +1,28 @@
 @import "tailwindcss";
+.app {
+}
 
-.description {
-  @apply text-gray-600 text-sm;
+.menubar {
+    @apply text-center content-center box-border z-0 top-0 h-20 bg-gradient-to-l from-transparent to-slate-800 divide-y-1 border-1;
+}
+.body {
+    @apply bg-slate-800;
+}
+
+.footer {
+    @apply justify-items-center w-full bg-slate-900 text-white border-t-1 border-black;
+}
+
+.bodycolumn {
+    @apply mx-100 left-0 bg-slate-200 p-7 w-fit divide-y-1 border-1;
+}
+
+.listcontainer {
+    @apply min-h-screen flex flex-col;
 }
 
 .cardbox {
-    @apply bg-white mx-1 my-2 grid gap-y-3 divide-y-1 divide-solid border-1;
+    @apply bg-white mx-1 my-2 grid gap-y-3 divide-y-1 divide-solid border-1 w-fit;
 }
 
 .topbar {
@@ -25,5 +42,5 @@
 }
 
 .descriptionBox {
-   @apply h-full box-border p-2 max-w-200 text-white border-1 border-solid;
+    @apply text-gray-600 text-sm pl-7;
 }
