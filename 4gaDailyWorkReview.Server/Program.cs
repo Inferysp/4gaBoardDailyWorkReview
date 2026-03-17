@@ -69,7 +69,7 @@ static async Task<IResult> GetCard(long id, [FromServices] DailyWorkContext db)
     return card is not null ? TypedResults.Ok(card) : TypedResults.NotFound();
 }
 
-// GET : cards/day/{id}
+// GET : cards/day/{date}
 static async Task<IResult> GetCardsForTheDay(DateTime dt, [FromServices] DailyWorkContext ctx)
 {
     var day = DateOnly.FromDateTime(dt);
@@ -77,7 +77,7 @@ static async Task<IResult> GetCardsForTheDay(DateTime dt, [FromServices] DailyWo
     var cards = await ctx.Cards
         .Where(e => (e.UpdatedAt.HasValue && e.UpdatedAt.Value.Date == date.Date)
                     ||(e.CreatedAt.HasValue && e.CreatedAt.Value.Date == date.Date))
-        .Select(x => new { x.Id, x.Name, x.Description, x.UpdatedById })
+        .Select(x => new { x.Id, x.Name, x.Description, x.UpdatedById, x.BoardId, x.CreatedById, x.ListId, x.Timer, x.DueDate, x.UpdatedAt, x.CreatedAt })
         .ToListAsync();
     return TypedResults.Ok(cards);
 }   

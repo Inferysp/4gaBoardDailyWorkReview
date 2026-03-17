@@ -1,12 +1,15 @@
 import react from 'react';
-
-export default function BoxCenter() {
-    var style = "";
+import Description from '../ParserCardDescription/Description.jsx'
+export default function BoxCenter({cardName, description}) {
+    var style = "text-lg";
 
     return (
         <div className="boxcenter">
             <div className={`${style}`}>
-                <p>description</p>
+                <p>{cardName}</p>
+            </div>
+            <div>
+                <Description markdown={description || 'Brak opisu'} />
             </div>
         </div>
     )

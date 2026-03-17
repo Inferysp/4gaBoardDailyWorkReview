@@ -13,7 +13,7 @@
 }
 
 .boxcenter {
-    @apply p-1 mr-3 rounded-r-lg shadow-md;
+    @apply p-1 pl-7 mr-3 rounded-r-lg shadow-md;
 }
 
 .downbar {
@@ -22,4 +22,8 @@
 
 .button {
     @apply border-black border-1 text-white p-1 w-15 rounded-sm bg-sky-500 hover:bg-sky-300 hover:text-gray-900 hover:outline-2;
+}
+
+.descriptionBox {
+   @apply h-full box-border p-2 max-w-200 text-white border-1 border-solid;
 }

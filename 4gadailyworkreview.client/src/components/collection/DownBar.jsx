@@ -1,8 +1,7 @@
 import react from 'react';
 
-export default function DownBar() {
+export default function DownBar({ authorId, lastChange, dueDate, updatedbyId }) {
     var style = "min-w-30 scheme-light";
-
     function btnEvent()
     {
         alert("test");
@@ -11,13 +10,13 @@ export default function DownBar() {
     return (
         <div className="downbar">
             <div className={`${style} flex-1`}>
-                <p>Author</p>
+                {authorId = null ? <p>author</p> : authorId}
             </div>
             <div className={`${style} flex-4`}>
-                <p>due Date</p>
+                {dueDate = null ? <p>due date</p> : dueDate }
             </div>
             <div className={`${style} flex-1`}>
-                <p>Last Date Time</p>
+                {lastChange = null ? <p>updated by</p> : ( new Date(lastChange).toLocaleString() )}
             </div>
             <div className="w-20">
                 <button className="button" onClick={btnEvent}>Test</button>
