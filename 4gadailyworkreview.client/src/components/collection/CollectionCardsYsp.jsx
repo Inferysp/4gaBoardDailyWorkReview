@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardWorkReview from './CardWorkReview/CardWorkReview.jsx';
 import { format } from "date-fns";
+import CardBox from './CardBox.jsx';
 
 function CollectionCardsYsp({ day }) {
     const [data, setData] = useState(null);
@@ -34,14 +35,19 @@ function CollectionCardsYsp({ day }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div>
+        <div className="listcontainer">
             <ul>
                 {data.map(item => (
                     <li key={item.id}>
-                        <CardWorkReview
-                            name={item.name}
-                            desc={item.description}
-                            creator={item.updatedById}
+                        <CardBox
+                            cardName={item.name}
+                            description={item.description}
+                            timer={item.timer}
+                            boardId={item.boardId}
+                            listId={item.listId}
+                            authorId={item.updatedById}
+                            lastChange={item.updatedAt}
+                            createDate={item.createdAt}
                         />
                     </li>
                 ))}

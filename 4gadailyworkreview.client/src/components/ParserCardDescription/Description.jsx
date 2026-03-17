@@ -1,16 +1,18 @@
 import { marked } from 'marked';
 
-function Description({style, markdown }) {
+function Description({ markdown }) {
     const html = marked(markdown, {
         breaks: true,
         gfm: true
     });
 
     return (
-        <div
-            class="description"
-            dangerouslySetInnerHTML={{ __html: html }}
-        />
+        <div className="descriptionBox">
+            <div
+                class="description"
+                dangerouslySetInnerHTML={{ __html: html }}
+            />
+        </div>
     );
 }
 
