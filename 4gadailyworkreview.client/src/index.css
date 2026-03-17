@@ -3,3 +3,23 @@
 .description {
   @apply text-gray-600 text-sm;
 }
+
+.cardbox {
+    @apply bg-white mx-1 my-2 grid gap-y-3 divide-y-1 divide-solid border-1;
+}
+
+.topbar {
+    @apply grid grid-cols-2 gap-2 pl-3 pr-15 py-2 shadow-sm mb-2;
+}
+
+.boxcenter {
+    @apply p-1 mr-3 rounded-r-lg shadow-md;
+}
+
+.downbar {
+    @apply flex flex-row items-center p-1;
+}
+
+.button {
+    @apply border-black border-1 text-white p-1 w-15 rounded-sm bg-sky-500 hover:bg-sky-300 hover:text-gray-900 hover:outline-2;
+}

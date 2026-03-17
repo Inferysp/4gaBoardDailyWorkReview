@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CardWorkReview from './CardWorkReview/CardWorkReview.jsx';
 import { format } from "date-fns";
+import CardBox from './CardBox.jsx';
 
 function CollectionCardsYsp({ day }) {
     const [data, setData] = useState(null);
@@ -46,7 +47,9 @@ function CollectionCardsYsp({ day }) {
                     </li>
                 ))}
             </ul>
+            <CardBox />
         </div>
+
     );
 }
 
