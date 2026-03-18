@@ -32,3 +32,7 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/minimalapi/project/164379097860931
 GET {{4gaDailyWorkReview.Server_HostAddress}}/cards/day/2026-03-17
 
 ###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/board/1703671917778569000
+
+###

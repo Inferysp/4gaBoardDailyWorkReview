@@ -53,6 +53,11 @@ export default defineConfig({
                 target: 'https://localhost:7098', // wy³¹czam spa proxy
                 secure: false,
                 changeOrigin: true
+            },
+            '/api': {
+                target: 'https://localhost:7098',
+                secure: false,
+                changeOrigin: true
             }
         },
         port: 58282, // parseInt(env.DEV_SERVER_PORT || '58282'),

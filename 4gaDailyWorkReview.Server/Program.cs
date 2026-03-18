@@ -21,6 +21,7 @@ builder.Services.AddTransient<IDbConnection>(sp =>
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddScoped<IProjectReadRepository, ProjectReadRepository>();
+builder.Services.AddScoped<IBoardReadRepository, BoardReadRepository>();
 
 //MediatR < 
 //builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -28,6 +29,7 @@ builder.Services.AddScoped<IProjectReadRepository, ProjectReadRepository>();
 builder.Services.AddMediatR(typeof(Program).Assembly);
 builder.Services.AddMediatR(typeof(GetProjectsQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetProjectQueryHandler).Assembly);
+builder.Services.AddMediatR(typeof(GetBoardQueryHandler).Assembly);
 //MediatR 12.*
 //builder.Services.AddMediatR(cfg => cfg.RequestExceptionActionProcessorStrategy(AppDomain.CurrentDomain.GetAssemblies())); 
 

@@ -1,4 +1,8 @@
+import { useState, useEffect } from "react";
 export default function TopBar({ boardId, listId, timer }) {
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(null);
     let style = "w-min-45 scheme-dark";
     let timerr
     let time;
@@ -16,13 +20,49 @@ export default function TopBar({ boardId, listId, timer }) {
         time = `${hour.toString()}${minute.toString()}${second.toString()}`;
     }
 
+    var boardName = "Empty";
+    console.log("boardId");
+    console.log(boardId);
+    //Request for board
+    useEffect(() => {
+        console.log("useEffect");
+        const fetchResults = async () => {
+            try {
+                const response = await fetch(`api/board/${boardId}`);
+                console.log("response");
+                console.log(response);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                console.log("result");
+                console.log(result);
+                setData(result);
+            } catch (error) {
+                setError(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchResults();
+    }, [boardId]); // Dodano day jako dependency
+
+    if (loading) return <p>£adowanie...</p>;
+
+    if (error) return <p>B³¹d: {error.message}</p>;
+
+    console.log("data");
+    console.log(data);
+    boardName = JSON.parse(data).name;
     return (
         <div className="topbar">
             <div className={`${style}`}>
                 <p>Projekt</p>
             </div>
             <div className={`${style}`}>
-                <p>Board: {boardId}</p>
+                <p>Board: {boardName}</p>
             </div>
             <div className={`${style}`}>
                 <p>List: {listId}</p>
