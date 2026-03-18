@@ -25,7 +25,13 @@ namespace _4gaDailyWorkReview.Server.Controllers
             var board = await _mediator.Send(query);
             if (board is null)
                 return NotFound();
-            return Ok(board);
+            return Ok(new BoardDTO
+            {
+                Id = board.Id.ToString(),
+                ProjectId = board.ProjectId.ToString(),
+                Name = board.Name,
+                GithubRepo = board.GithubRepo
+            });
         }
     }
 }

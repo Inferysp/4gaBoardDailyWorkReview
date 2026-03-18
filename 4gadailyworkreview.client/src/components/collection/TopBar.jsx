@@ -21,16 +21,16 @@ export default function TopBar({ boardId, listId, timer }) {
     }
 
     var boardName = "Empty";
-    console.log("boardId");
-    console.log(boardId);
+    //console.log("boardId");
+    //console.log(boardId);
     //Request for board
     useEffect(() => {
         console.log("useEffect");
         const fetchResults = async () => {
             try {
                 const response = await fetch(`api/board/${boardId}`);
-                console.log("response");
-                console.log(response);
+                //console.log("response");
+                //console.log(response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
@@ -53,16 +53,13 @@ export default function TopBar({ boardId, listId, timer }) {
 
     if (error) return <p>B³¹d: {error.message}</p>;
 
-    console.log("data");
-    console.log(data);
-    boardName = JSON.parse(data).name;
     return (
         <div className="topbar">
             <div className={`${style}`}>
                 <p>Projekt</p>
             </div>
             <div className={`${style}`}>
-                <p>Board: {boardName}</p>
+                <p>Board: {data != null ? data.name : "Empty"}</p>
             </div>
             <div className={`${style}`}>
                 <p>List: {listId}</p>

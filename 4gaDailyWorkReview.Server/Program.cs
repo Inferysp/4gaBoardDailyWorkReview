@@ -1,4 +1,5 @@
 using _4gaDailyWorkReview.Server.Data;
+using _4gaDailyWorkReview.Server.DTOs;
 using _4gaDailyWorkReview.Server.Handlers;
 using _4gaDailyWorkReview.Server.Queries;
 using _4gaDailyWorkReview.Server.Repositories;
@@ -79,7 +80,17 @@ static async Task<IResult> GetCardsForTheDay(DateTime dt, [FromServices] DailyWo
     var cards = await ctx.Cards
         .Where(e => (e.UpdatedAt.HasValue && e.UpdatedAt.Value.Date == date.Date)
                     ||(e.CreatedAt.HasValue && e.CreatedAt.Value.Date == date.Date))
-        .Select(x => new { x.Id, x.Name, x.Description, x.UpdatedById, x.BoardId, x.CreatedById, x.ListId, x.Timer, x.DueDate, x.UpdatedAt, x.CreatedAt })
+        .Select(x => new CardDTO{ Id = x.Id.ToString(),
+                                    Name = x.Name,
+                                    Description = x.Description,
+                                    UpdatedById = x.UpdatedById.ToString(),
+                                    BoardId = x.BoardId.ToString(),
+                                    CreatedById = x.CreatedById.ToString(),
+                                    ListId = x.ListId.ToString(),
+                                    Timer = x.Timer,
+                                    DueDate = x.DueDate,
+                                    UpdatedAt = x.UpdatedAt,
+                                    CreatedAt = x.CreatedAt })
         .ToListAsync();
     return TypedResults.Ok(cards);
 }   

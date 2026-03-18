@@ -8,13 +8,13 @@ namespace _4gaDailyWorkReview.Server.DTOs
     {
         [Key]
         [Column("id")]
-        public long Id { get; set; }
+        public string Id { get; set; }
         [Column("board_id")]
-        public long BoardId { get; set; }
+        public string BoardId { get; set; }
         [Column("list_id")]
-        public long ListId { get; set; }
+        public string ListId { get; set; }
         [Column("created_by_id")]
-        public long CreatedById { get; set; }
+        public string CreatedById { get; set; }
         [Column("cover_attachment_id")]
         public long? CoverAttachmentId { get; set; }
         [Column("position")]
@@ -34,6 +34,6 @@ namespace _4gaDailyWorkReview.Server.DTOs
         [Column("comment_count")]
         public int CommentCount { get; set; }
         [Column("updated_by_id")]
-        public long? UpdatedById { get; set; }
+        public string? UpdatedById { get; set; }
     }
 }
