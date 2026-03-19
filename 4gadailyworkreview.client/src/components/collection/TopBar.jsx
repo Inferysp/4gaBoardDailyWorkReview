@@ -25,7 +25,7 @@ export default function TopBar({ boardId, listId, timer }) {
     //console.log(boardId);
     //Request for board
     useEffect(() => {
-        console.log("useEffect");
+        //console.log("useEffect");
         const fetchResults = async () => {
             try {
                 const response = await fetch(`api/board/${boardId}`);
@@ -36,8 +36,8 @@ export default function TopBar({ boardId, listId, timer }) {
                 }
 
                 const result = await response.json();
-                console.log("result");
-                console.log(result);
+                //console.log("result");
+                //console.log(result);
                 setData(result);
             } catch (error) {
                 setError(error);

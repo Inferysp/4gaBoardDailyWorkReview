@@ -1,10 +1,23 @@
 import Btn from './components/BTN/Btn.jsx';
 import CollectionCardsYsp from './components/collection/CollectionCardsYsp.jsx';
 import DatePicker from './components/datePicker/DatePicker.jsx';
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import { AppContext } from './AppContext.jsx';
 
 function App() {
+    const { timerSum } = useContext(AppContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
+
+    let timeSumPresentation = "";
+    let timerr = timerSum;
+    let hours = Math.floor(timerr / 3600);
+    let minutes = Math.floor((timerr % 3600) / 60);
+    let seconds = timerr % 60;
+
+    let hour = hours < 10 ? `0${hours}:` : `${hours}:`;
+    let minute = minutes < 10 ? `0${minutes}:` : `${minutes}:`;
+    let second = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    timeSumPresentation = `${hour.toString()}${minute.toString()}${second.toString()}`;
 
     return (
         <div className="app">
@@ -26,7 +39,7 @@ function App() {
                 <div className="bodycolumn">
                     <div className="cardsbar">
                             <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
-                            <p>suma timer total w ci¹gu dnia</p>
+                        <p>suma dzisiaj: {timeSumPresentation}</p>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
                     <CollectionCardsYsp day={selectedDate} />
@@ -43,7 +56,6 @@ function App() {
 
         </div>
     );
-    
 }
 
 export default App;
