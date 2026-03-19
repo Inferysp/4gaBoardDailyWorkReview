@@ -9,7 +9,6 @@ function Description({ markdown }) {
     return (
         <div className="descriptionBox">
             <div
-                class="description"
                 dangerouslySetInnerHTML={{ __html: html }}
             />
         </div>

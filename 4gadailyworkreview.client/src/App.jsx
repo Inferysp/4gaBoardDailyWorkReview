@@ -24,7 +24,10 @@ function App() {
 
             <div className="body">
                 <div className="bodycolumn">
-                    <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
+                    <div className="cardsbar">
+                            <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
+                            <p>suma timer total w ci¹gu dnia</p>
+                    </div>
                 <div className="grid grid-cols-1 gap-6">
                     <CollectionCardsYsp day={selectedDate} />
                 </div>

@@ -17,6 +17,9 @@
     @apply mx-100 left-0 bg-slate-200 p-7 w-fit divide-y-1 border-1;
 }
 
+.cardsbar {
+    @apply flex flex-row justify-between;
+}
 .listcontainer {
     @apply min-h-screen flex flex-col;
 }
