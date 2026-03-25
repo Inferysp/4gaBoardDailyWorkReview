@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import List from './List.jsx';
 export default function TopBar({ boardId, listId, timer }) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -25,7 +26,7 @@ export default function TopBar({ boardId, listId, timer }) {
     //console.log(boardId);
     //Request for board
     useEffect(() => {
-        console.log("useEffect");
+        //console.log("useEffect");
         const fetchResults = async () => {
             try {
                 const response = await fetch(`api/board/${boardId}`);
@@ -36,8 +37,8 @@ export default function TopBar({ boardId, listId, timer }) {
                 }
 
                 const result = await response.json();
-                console.log("result");
-                console.log(result);
+                //console.log("result");
+                //console.log(result);
                 setData(result);
             } catch (error) {
                 setError(error);
@@ -61,9 +62,7 @@ export default function TopBar({ boardId, listId, timer }) {
             <div className={`${style}`}>
                 <p>Board: {data != null ? data.name : "Empty"}</p>
             </div>
-            <div className={`${style}`}>
-                <p>List: {listId}</p>
-            </div>
+            <List style={style} listid={listId} />
             <div className={`w-min-24 justify-self-end`}>
                 <p>Timer: {timer != null ? ( timerr != null ? time : "") : "brak wpisu"}</p>
             </div>

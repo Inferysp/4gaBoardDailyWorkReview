@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import CardWorkReview from './CardWorkReview/CardWorkReview.jsx';
 import { format } from "date-fns";
 import CardBox from './CardBox.jsx';
+import { TimerContext } from '../../TimerContext.jsx';
+import { DataContext } from '../../DataContext.jsx';
 
-function CollectionCardsYsp({ day }) {
-    const [data, setData] = useState(null);
+function CollectionCardsYsp({ day, data }) {
+    const { setTimerSum } = useContext(TimerContext);
+    const { setData } = useContext(DataContext);
+
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -19,17 +23,18 @@ function CollectionCardsYsp({ day }) {
                 }
 
                 const result = await response.json();
-                console.log(result);
                 setData(result);
+
             } catch (error) {
                 setError(error);
             } finally {
                 setLoading(false);
             }
         };
-
         fetchResults();
-    }, [day]); // Dodano day jako dependency
+
+    }, [day]);
+
 
     if (loading) return <p>£adowanie...</p>;
 

@@ -36,3 +36,7 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/cards/day/2026-03-17
 GET {{4gaDailyWorkReview.Server_HostAddress}}/api/board/1703671917778569000
 
 ###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/list/1643791192887919874
+
+###
