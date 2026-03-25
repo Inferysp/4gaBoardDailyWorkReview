@@ -1,12 +1,15 @@
 import Btn from './components/BTN/Btn.jsx';
 import CollectionCardsYsp from './components/collection/CollectionCardsYsp.jsx';
 import DatePicker from './components/datePicker/DatePicker.jsx';
-import React, { useState, useContext, useEffect } from 'react';
-import { AppContext } from './AppContext.jsx';
+import React, { useState, useContext, useEffect, useRef } from 'react';
+import { TimerContext } from './TimerContext.jsx';
+import { DataContext } from './DataContext.jsx';
 
 function App() {
-    const { timerSum } = useContext(AppContext);
+    const { timerSum, setTimerSum } = useContext(TimerContext);
+    const { data } = useContext(DataContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [time, setTime] = useState(new Date().toLocaleString());
 
     let timeSumPresentation = "";
     let timerr = timerSum;
@@ -19,6 +22,38 @@ function App() {
     let second = seconds < 10 ? `0${seconds}` : `${seconds}`;
     timeSumPresentation = `${hour.toString()}${minute.toString()}${second.toString()}`;
 
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTime(new Date().toLocaleString());
+        }, 1000);
+
+        // Clean up the timer when the component unmounts
+        return () => clearInterval(timer);
+    }, []);
+
+    useEffect(() => {
+
+        const extractTimer = (item) => {
+            return JSON.parse(item.timer); // {total, createdAt}
+        }
+
+        const increment = (card) => {
+            const timer = extractTimer(card);
+            if (timer != null)
+                setTimerSum(i => i + timer.total);
+        }
+
+        const updateTimerSum = (collection) => {
+            setTimerSum(0);
+            for (let card in collection) {
+                increment(collection[card]);
+            }
+        }
+
+        if (!data) return;
+        updateTimerSum(data);
+    }, [data]);
+
     return (
         <div className="app">
             <div className="menubar">
@@ -30,7 +65,7 @@ function App() {
                         <h2>4gaBoard Daily Work Review</h2>
                     </div>
                     <div className=" p-4">
-                        <h2>{new Date().toLocaleString()}</h2>
+                        <h2>{time}</h2>
                     </div>
                 </div>
             </div>
@@ -39,10 +74,10 @@ function App() {
                 <div className="bodycolumn">
                     <div className="cardsbar">
                             <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
-                        <p>suma dzisiaj: {timeSumPresentation}</p>
+                        <p>Czas pracy: {timeSumPresentation}</p>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
-                    <CollectionCardsYsp day={selectedDate} />
+                        <CollectionCardsYsp day={selectedDate} data={data} />
                 </div>
                 <Btn cardId="1699997500410169099" />
                 </div>
