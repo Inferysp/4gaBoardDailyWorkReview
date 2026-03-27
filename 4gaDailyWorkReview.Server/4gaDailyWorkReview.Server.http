@@ -41,3 +41,5 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/api/board/1703671917778569000
 GET {{4gaDailyWorkReview.Server_HostAddress}}/api/list/1643791192887919874
 
 ###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/card/1639360480600392837

@@ -24,6 +24,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IProjectReadRepository, ProjectReadRepository>();
 builder.Services.AddScoped<IBoardReadRepository, BoardReadRepository>();
 builder.Services.AddScoped<IListReadRepository, ListReadRepository>();
+builder.Services.AddScoped<ICardReadRepository, CardReadRepository>();
 
 //MediatR < 
 //builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -33,6 +34,7 @@ builder.Services.AddMediatR(typeof(GetProjectsQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetProjectQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetBoardQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetListQueryHandler).Assembly);
+builder.Services.AddMediatR(typeof(GetCardQueryHandler).Assembly);
 //MediatR 12.*
 //builder.Services.AddMediatR(cfg => cfg.RequestExceptionActionProcessorStrategy(AppDomain.CurrentDomain.GetAssemblies())); 
 
@@ -54,7 +56,6 @@ app.UseCors("AllowReact");
 var dailyWorkReviewItems = app.MapGroup("/cards");
 
 dailyWorkReviewItems.MapGet("/", GetUserCards);
-dailyWorkReviewItems.MapGet("/{id:long}", GetCard);
 dailyWorkReviewItems.MapGet("/day/{dt}", GetCardsForTheDay);
 
 //GET : cards
@@ -65,13 +66,6 @@ static async Task<IResult> GetUserCards([FromServices] DailyWorkContext db)
         .Select(x => new { x.Name, x.Description, x.UpdatedById})
         .ToListAsync();
     return TypedResults.Ok(cards);
-}
-
-// GET : cards/{id}
-static async Task<IResult> GetCard(long id, [FromServices] DailyWorkContext db)
-{
-    var card = await db.Cards.FindAsync(id);
-    return card is not null ? TypedResults.Ok(card) : TypedResults.NotFound();
 }
 
 // GET : cards/day/{date}
