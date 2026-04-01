@@ -1,0 +1,42 @@
+name: 4gaDWR
+services:
+  4gadailyworkreview.server:
+    container_name: 4gadailyworkreview.server
+    image: 4gadailyworkreview.server:latest
+    build:
+      context: ./4gaDailyWorkReview.Server
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: "http://*:8080"
+      ConnectionStrings__DefaultConnection: Host=4gaboards-db-1;Port=5432;Database=4gaBoards;Username=postgres;Password=notpassword
+    networks:
+      - 4gaboards_boards-network 
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pgrep", "dotnet"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  4gadailyworkreview.client:
+    container_name: 4gadailyworkreview.client
+    build:
+      context: ./4gadailyworkreview.client
+      dockerfile: Dockerfile
+    ports:
+      - "5000:80"
+    depends_on:
+      4gadailyworkreview.server:
+        condition: service_healthy
+    networks:
+      - 4gaboards_boards-network
+    restart: unless-stopped
+
+networks:
+  4gaboards_boards-network:
+    name: 4gaboards_boards-network
+    external: true
