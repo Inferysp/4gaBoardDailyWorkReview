@@ -23,23 +23,15 @@ export default function TopBar({ boardId, listId, timer }) {
     }
 
     var boardName = "Empty";
-    //console.log("boardId");
-    //console.log(boardId);
-    //Request for board
     useEffect(() => {
-        //console.log("useEffect");
         const fetchResults = async () => {
             try {
                 const response = await fetch(`api/board/${boardId}`);
-                //console.log("response");
-                //console.log(response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
                 const result = await response.json();
-                //console.log("result");
-                //console.log(result);
                 setData(result);
             } catch (error) {
                 setError(error);
@@ -49,7 +41,7 @@ export default function TopBar({ boardId, listId, timer }) {
         };
 
         fetchResults();
-    }, [boardId]); // Dodano day jako dependency
+    }, [boardId]);
 
     if (loading) return <p>£adowanie...</p>;
 

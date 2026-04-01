@@ -1,4 +1,3 @@
-import Btn from './components/BTN/Btn.jsx';
 import CollectionCardsYsp from './components/collection/CollectionCardsYsp.jsx';
 import DatePicker from './components/datePicker/DatePicker.jsx';
 import React, { useState, useContext, useEffect, useRef } from 'react';
@@ -34,7 +33,7 @@ function App() {
     useEffect(() => {
 
         const extractTimer = (item) => {
-            return JSON.parse(item.timer); // {total, createdAt}
+            return JSON.parse(item.timer);
         }
 
         const increment = (card) => {
@@ -78,8 +77,7 @@ function App() {
                     </div>
                 <div className="grid grid-cols-1 gap-6">
                         <CollectionCardsYsp day={selectedDate} data={data} />
-                </div>
-                <Btn cardId="1699997500410169099" />
+                    </div>
                 </div>
             </div>
 
