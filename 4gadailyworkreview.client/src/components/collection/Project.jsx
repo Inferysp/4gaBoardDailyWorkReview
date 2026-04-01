@@ -26,10 +26,13 @@ export default function Project({ style, projectid }) {
 
     }, [projectid]);
 
+    if (loading) return <p>£adowanie...</p>;
+
+    if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        < div className={`${style}`} >
-            <p>Project: {project != null ? project.name : "Brak"}</p>
+        <div className={`${style}`} >
+            <p>Project: {project != null ? project.name : "Empty"}</p>
         </div>
     )
 }

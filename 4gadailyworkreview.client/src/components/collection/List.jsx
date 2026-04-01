@@ -29,6 +29,10 @@ export default function List({ style, listid }) {
         fetchRequest(listid);
     }, [listid])
 
+    if (loading) return <p>£adowanie...</p>;
+
+    if (error) return <p>B³¹d: {error.message}</p>;
+
     return (
         <div className={`${style}`}>
             <p>List: {list != null ? list.name  : "Brak"}</p>
