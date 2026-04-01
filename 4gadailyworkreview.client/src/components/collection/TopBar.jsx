@@ -1,44 +1,26 @@
 import { useState, useEffect } from "react";
 import List from './List.jsx';
+import Project from './Project.jsx';
+import Timer from './Timer.jsx';
+import Board from './Board.jsx';
+
 export default function TopBar({ boardId, listId, timer }) {
+    const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState(null);
+
     let style = "w-min-45 scheme-dark";
-    let timerr
-    let time;
-
-    if (timer != null) {
-        timerr = JSON.parse(timer);
-
-        let hours = Math.floor(timerr.total / 3600);
-        let minutes = Math.floor((timerr.total % 3600) / 60);
-        let seconds = timerr.total % 60;
-
-        let hour = hours < 10 ? `0${hours}:` : `${hours}:`;
-        let minute = minutes < 10 ? `0${minutes}:` : `${minutes}:`;
-        let second = seconds < 10 ? `0${seconds}` : `${seconds}`;
-        time = `${hour.toString()}${minute.toString()}${second.toString()}`;
-    }
-
     var boardName = "Empty";
-    //console.log("boardId");
-    //console.log(boardId);
-    //Request for board
+
     useEffect(() => {
-        //console.log("useEffect");
         const fetchResults = async () => {
             try {
                 const response = await fetch(`api/board/${boardId}`);
-                //console.log("response");
-                //console.log(response);
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
                 }
 
                 const result = await response.json();
-                //console.log("result");
-                //console.log(result);
                 setData(result);
             } catch (error) {
                 setError(error);
@@ -46,9 +28,8 @@ export default function TopBar({ boardId, listId, timer }) {
                 setLoading(false);
             }
         };
-
         fetchResults();
-    }, [boardId]); // Dodano day jako dependency
+    }, [boardId]);
 
     if (loading) return <p>£adowanie...</p>;
 
@@ -56,16 +37,10 @@ export default function TopBar({ boardId, listId, timer }) {
 
     return (
         <div className="topbar">
-            <div className={`${style}`}>
-                <p>Projekt</p>
-            </div>
-            <div className={`${style}`}>
-                <p>Board: {data != null ? data.name : "Empty"}</p>
-            </div>
-            <List style={style} listid={listId} />
-            <div className={`w-min-24 justify-self-end`}>
-                <p>Timer: {timer != null ? ( timerr != null ? time : "") : "brak wpisu"}</p>
-            </div>
+            <Project style={style} projectid={data.projectId} />
+            <Board style={style} loading={loading} error={error} board={data} />
+            <List style={style} loading={loading} error={error} listid={listId} />
+            <Timer style={style} loading={loading} error={error} timer={timer} />
         </div>
     )
 }

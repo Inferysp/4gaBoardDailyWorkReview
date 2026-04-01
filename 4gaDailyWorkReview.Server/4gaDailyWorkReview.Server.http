@@ -1,5 +1,4 @@
-# @4gaDailyWorkReview.Server_HostAddress = https://localhost:7098
-@4gaDailyWorkReview.Server_HostAddress = http://172.19.0.1:5000/
+@4gaDailyWorkReview.Server_HostAddress = https://localhost:7098
 
 GET {{_4gaDailyWorkReview.Server_HostAddress}}/cards
 
@@ -41,3 +40,5 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/api/board/1703671917778569000
 GET {{4gaDailyWorkReview.Server_HostAddress}}/api/list/1643791192887919874
 
 ###
+
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/card/1639360480600392837
