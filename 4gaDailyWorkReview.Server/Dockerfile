@@ -1,41 +1,29 @@
-# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
-# Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-# For more information, please see https://aka.ms/containercompat
-
-# This stage is used when running from VS in fast mode (Default for Debug configuration)
-FROM mcr.microsoft.com/dotnet/aspnet:9.0-nanoserver-1809 AS base
+# Server Dockerfile for .NET 9 (build context: ./4gaDailyWorkReview.Server)
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
+# install procps so `pgrep` is available for the healthcheck
+RUN apt-get update && apt-get install -y --no-install-recommends procps \
+    && rm -rf /var/lib/apt/lists/*
 
-# This stage is used to build the service project
-FROM mcr.microsoft.com/dotnet/sdk:9.0-nanoserver-1809 AS with-node
-WORKDIR /src
-RUN curl https://nodejs.org/dist/v18.18.0/node-v18.18.0-win-x64.zip --output node.zip
-RUN tar -xf node.zip
-USER ContainerAdministrator
-RUN setx /M path "%path%;C:\src\node-v18.18.0-win-x64"
-USER ContainerUser
-
-
-FROM with-node AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["4gaDailyWorkReview.Server/4gaDailyWorkReview.Server.csproj", "4gaDailyWorkReview.Server/"]
-COPY ["4gadailyworkreview.client/4gadailyworkreview.client.esproj", "4gadailyworkreview.client/"]
-RUN dotnet restore "./4gaDailyWorkReview.Server/4gaDailyWorkReview.Server.csproj"
-COPY . .
-WORKDIR "/src/4gaDailyWorkReview.Server"
-RUN dotnet build "./4gaDailyWorkReview.Server.csproj" -c %BUILD_CONFIGURATION% -o /app/build
 
-# This stage is used to publish the service project to be copied to the final stage
+# copy project file(s) from the build context root
+COPY ["4gaDailyWorkReview.Server.csproj", "./"]
+RUN dotnet restore "4gaDailyWorkReview.Server.csproj"
+
+# copy remaining source and build
+COPY . .
+RUN dotnet build "4gaDailyWorkReview.Server.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./4gaDailyWorkReview.Server.csproj" -c %BUILD_CONFIGURATION% -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "4gaDailyWorkReview.Server.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
-# This stage is used in production or when running from VS in regular mode (Default when not using the Debug configuration)
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
