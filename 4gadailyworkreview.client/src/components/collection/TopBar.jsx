@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import List from './List.jsx';
+import Project from './Project.jsx';
 export default function TopBar({ boardId, listId, timer }) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -57,7 +58,7 @@ export default function TopBar({ boardId, listId, timer }) {
     return (
         <div className="topbar">
             <div className={`${style}`}>
-                <p>Projekt</p>
+                <Project style={style} projectid={data.projectId} />
             </div>
             <div className={`${style}`}>
                 <p>Board: {data != null ? data.name : "Empty"}</p>
