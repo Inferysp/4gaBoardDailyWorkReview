@@ -16,7 +16,19 @@ A full-stack SPA application `React and ASP.NET Core` template for useful work p
 - Kanban tasks progress documentation lists for choosed Day.
 - postgreSQL db mapped by `Entity Framework Core` tools.
 
-### Development
+## Deploy
+
+**_Docker Compose (recommended)_ 4ga Boards Deploy**
+
+    https://github.com/RARgames/4gaBoards
+
+**Pull images and start 4ga DWR**
+
+    docker compose up -d
+
+Default 4ga DWR url: http://localhost:5000/
+
+## Development
 
 **Install Development 4ga Boards project from RARgames repository:**
 
