@@ -1,6 +1,6 @@
 ﻿using _4gaDailyWorkReview.Server.DTOs;
 using _4gaDailyWorkReview.Server.Queries;
-using _4gaDailyWorkReview.Server.Repositories;
+using _4gaDailyWorkReview.Server.Repositories.Interfaces;
 using MediatR;
 
 namespace _4gaDailyWorkReview.Server.Handlers

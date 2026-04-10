@@ -1,7 +1,7 @@
 ﻿using _4gaDailyWorkReview.Server.DTOs;
 using System.Data;
 
-namespace _4gaDailyWorkReview.Server.Repositories
+namespace _4gaDailyWorkReview.Server.Repositories.Interfaces
 {
     public interface ICardReadRepository
     {

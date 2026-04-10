@@ -16,7 +16,7 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/api/projects
 
 ###
 
-@id=1643790978609317116
+
 GET {{4gaDailyWorkReview.Server_HostAddress}}/api/project/1643790978609317116
 
 ###
@@ -42,3 +42,8 @@ GET {{4gaDailyWorkReview.Server_HostAddress}}/api/list/1643791192887919874
 ###
 
 GET {{4gaDailyWorkReview.Server_HostAddress}}/api/card/1639360480600392837
+
+###
+GET {{4gaDailyWorkReview.Server_HostAddress}}/api/user/1639186154697786370
+
+###

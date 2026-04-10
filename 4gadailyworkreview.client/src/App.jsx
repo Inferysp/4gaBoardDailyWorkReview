@@ -3,6 +3,7 @@ import DatePicker from './components/datePicker/DatePicker.jsx';
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import { TimerContext } from './TimerContext.jsx';
 import { DataContext } from './DataContext.jsx';
+import SearchForm from './components/search/SearchForm.jsx';
 
 function App() {
     const { timerSum, setTimerSum } = useContext(TimerContext);
@@ -72,7 +73,8 @@ function App() {
             <div className="body">
                 <div className="bodycolumn">
                     <div className="cardsbar">
-                            <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
+                        <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
+                        <SearchForm />
                         <p>Czas pracy: {timeSumPresentation}</p>
                     </div>
                 <div className="grid grid-cols-1 gap-6">

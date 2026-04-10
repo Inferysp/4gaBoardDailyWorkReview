@@ -1,6 +1,6 @@
 ﻿using _4gaDailyWorkReview.Server.DTOs;
 
-namespace _4gaDailyWorkReview.Server.Repositories
+namespace _4gaDailyWorkReview.Server.Repositories.Interfaces
 {
     public interface IBoardReadRepository
     {

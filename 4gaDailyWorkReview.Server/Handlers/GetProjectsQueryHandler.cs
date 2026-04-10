@@ -2,7 +2,7 @@
 using _4gaDailyWorkReview.Server.DTOs;
 using _4gaDailyWorkReview.Server.Models;
 using _4gaDailyWorkReview.Server.Queries;
-using _4gaDailyWorkReview.Server.Repositories;
+using _4gaDailyWorkReview.Server.Repositories.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

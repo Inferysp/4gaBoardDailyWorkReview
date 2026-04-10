@@ -1,5 +1,5 @@
 import react from 'react';
-
+import Author from './Author';
 export default function DownBar({ authorId, lastChange, dueDate, updatedbyId }) {
     var style = "min-w-30 scheme-light";
     function btnEvent()
@@ -9,9 +9,7 @@ export default function DownBar({ authorId, lastChange, dueDate, updatedbyId }) 
 
     return (
         <div className="downbar">
-            <div className={`${style} flex-1`}>
-                {authorId = null ? <p>author</p> : authorId}
-            </div>
+            <Author authorid={authorId} style={style} />
             <div className={`${style} flex-4`}>
                 {dueDate = null ? <p>due date</p> : dueDate }
             </div>
