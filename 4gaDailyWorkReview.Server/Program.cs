@@ -25,6 +25,7 @@ builder.Services.AddScoped<IProjectReadRepository, ProjectReadRepository>();
 builder.Services.AddScoped<IBoardReadRepository, BoardReadRepository>();
 builder.Services.AddScoped<IListReadRepository, ListReadRepository>();
 builder.Services.AddScoped<ICardReadRepository, CardReadRepository>();
+builder.Services.AddScoped<IUserReadRepository, UserReadRepository>();
 
 //MediatR < 
 //builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
@@ -35,6 +36,7 @@ builder.Services.AddMediatR(typeof(GetProjectQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetBoardQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetListQueryHandler).Assembly);
 builder.Services.AddMediatR(typeof(GetCardQueryHandler).Assembly);
+builder.Services.AddMediatR(typeof(GetUserQueryHandler).Assembly);
 //MediatR 12.*
 //builder.Services.AddMediatR(cfg => cfg.RequestExceptionActionProcessorStrategy(AppDomain.CurrentDomain.GetAssemblies())); 
 
