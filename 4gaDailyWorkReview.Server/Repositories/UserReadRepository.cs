@@ -1,5 +1,6 @@
 ﻿using _4gaDailyWorkReview.Server.DTOs;
 using _4gaDailyWorkReview.Server.Models;
+using _4gaDailyWorkReview.Server.Repositories.Interfaces;
 using Dapper;
 using System.Data;
 
