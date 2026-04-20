@@ -11,6 +11,7 @@ export default function SearchForm({ setSearchedData }) {
 
     useEffect(() => {
         const fetchResults = async () => {
+            setSearchedData(null);
             try {
                 const response = await fetch(`/cards/filter/${input}`);
                 if (!response.ok)
@@ -30,8 +31,6 @@ export default function SearchForm({ setSearchedData }) {
         };
         if (input.length !== 0)
             fetchResults();
-        if (input.length === 0)
-            setSearchedData(null);
 
     }, [input]);
 

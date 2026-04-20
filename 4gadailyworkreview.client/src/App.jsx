@@ -78,7 +78,7 @@ function App() {
             <div className="body">
                 <div className="bodycolumn">
                     <div className="cardsbar">
-                        <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
+                        <DatePicker date={selectedDate} onDateChange={(d) => { setSelectedDate(d); setSearchedData(null) } } />
                         <SearchForm setSearchedData={setSearchedData} />
                         <CountFilteredCards number={cardsNumber} />
                         <p>Czas pracy: {timeSumPresentation}</p>
