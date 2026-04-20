@@ -2,6 +2,12 @@
 
 ## 4gaDWR - 4ga board daily work review
 
+### Case study
+
+An example of a daily task list, including a description of actual programming task and a summary of the working day.
+
+<img width="718" height="711" alt="firefox_4GroLHDzWz" src="https://github.com/user-attachments/assets/e2764f8b-44f2-4b6b-8b0c-3b6d2fcd27e8" />
+
 ### Tech Stack
 
 - Client - **React.js, Vite.js, TailwindCss,  useState, useEffect, date-fns**
