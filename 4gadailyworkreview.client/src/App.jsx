@@ -5,13 +5,16 @@ import { TimerContext } from './TimerContext.jsx';
 import { DataContext } from './DataContext.jsx';
 import SearchForm from './components/search/SearchForm.jsx';
 import CountFilteredCards from './components/count/CountFilteredCards.jsx';
+import CollectionCards from './components/collection/CollectionCards.jsx';
 
 function App() {
     const { timerSum, setTimerSum } = useContext(TimerContext);
     const { cardsNumber } = useContext(DataContext);
     const { data } = useContext(DataContext);
+
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [time, setTime] = useState(new Date().toLocaleString());
+    const [searchedData, setSearchedData] = useState(null);
 
     let timeSumPresentation = "";
     let timerr = timerSum;
@@ -76,12 +79,16 @@ function App() {
                 <div className="bodycolumn">
                     <div className="cardsbar">
                         <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
-                        <SearchForm />
+                        <SearchForm setSearchedData={setSearchedData} />
                         <CountFilteredCards number={cardsNumber} />
                         <p>Czas pracy: {timeSumPresentation}</p>
                     </div>
-                <div className="grid grid-cols-1 gap-6">
-                        <CollectionCardsYsp day={selectedDate} data={data} />
+                    <div className="grid grid-cols-1 gap-6">
+                        {searchedData === null ?
+                            <CollectionCardsYsp day={selectedDate} data={data} />
+                            :
+                            <CollectionCards data={searchedData} />
+                        }
                     </div>
                 </div>
             </div>

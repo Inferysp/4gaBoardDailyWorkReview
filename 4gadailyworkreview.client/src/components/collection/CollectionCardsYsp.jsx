@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import CardWorkReview from './CardWorkReview/CardWorkReview.jsx';
 import { format } from "date-fns";
-import CardBox from './CardBox.jsx';
 import { TimerContext } from '../../TimerContext.jsx';
 import { DataContext } from '../../DataContext.jsx';
+import CollectionCards from './CollectionCards.jsx';
 
 function CollectionCardsYsp({ day, data }) {
     const { setTimerSum } = useContext(TimerContext);
@@ -25,7 +25,7 @@ function CollectionCardsYsp({ day, data }) {
 
                 const result = await response.json();
                 setData(result);
-                console.log(`Iloœæ kart ${result.length}`)
+                console.log(`Iloœæ kart CollectionCards ${result.length}`)
                 setCardsNumber(result.length);
 
             } catch (error) {
@@ -44,24 +44,7 @@ function CollectionCardsYsp({ day, data }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div className="listcontainer">
-            <ul>
-                {data.map(item => (
-                    <li key={item.id}>
-                        <CardBox
-                            cardName={item.name}
-                            description={item.description}
-                            timer={item.timer}
-                            boardId={item.boardId}
-                            listId={item.listId}
-                            authorId={item.updatedById}
-                            lastChange={item.updatedAt}
-                            createDate={item.createdAt}
-                        />
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <CollectionCards data={data} />
     );
 }
 

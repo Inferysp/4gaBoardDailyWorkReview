@@ -1,6 +1,7 @@
 using _4gaDailyWorkReview.Server.Data;
 using _4gaDailyWorkReview.Server.DTOs;
 using _4gaDailyWorkReview.Server.Handlers;
+using _4gaDailyWorkReview.Server.Models;
 using _4gaDailyWorkReview.Server.Queries;
 using _4gaDailyWorkReview.Server.Repositories;
 using _4gaDailyWorkReview.Server.Repositories.Interfaces;
@@ -60,6 +61,7 @@ var dailyWorkReviewItems = app.MapGroup("/cards");
 
 dailyWorkReviewItems.MapGet("/", GetUserCards);
 dailyWorkReviewItems.MapGet("/day/{dt}", GetCardsForTheDay);
+dailyWorkReviewItems.MapGet("/filter/{input}", GetCardsByInputString);
 
 //GET : cards
 static async Task<IResult> GetUserCards([FromServices] DailyWorkContext db)
@@ -93,6 +95,14 @@ static async Task<IResult> GetCardsForTheDay(DateTime dt, [FromServices] DailyWo
         .ToListAsync();
     return TypedResults.Ok(cards);
 }   
+
+// GET: cards/filter/%coœtam%
+
+static async Task<IResult> GetCardsByInputString(string input, [FromServices] DailyWorkContext ctx)
+{
+    var cards = await ctx.Cards.Where(c => c.Description.ToLower().Contains(input.ToLower())).ToListAsync();
+    return TypedResults.Ok(cards);
+}
 
 //CQRS MediatR Minimal API
 app.MapGet("minimalapi/projects", async ([FromServices] IMediator mediator) =>
