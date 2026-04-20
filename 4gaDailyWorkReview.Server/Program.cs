@@ -100,7 +100,20 @@ static async Task<IResult> GetCardsForTheDay(DateTime dt, [FromServices] DailyWo
 
 static async Task<IResult> GetCardsByInputString(string input, [FromServices] DailyWorkContext ctx)
 {
-    var cards = await ctx.Cards.Where(c => c.Description.ToLower().Contains(input.ToLower())).ToListAsync();
+    var cards = await ctx.Cards
+        .Where(c => c.Description.ToLower().Contains(input.ToLower()))
+        .Select(x => new CardDTO {  Id = x.Id.ToString(),
+                                    Name = x.Name,
+                                    Description = x.Description,
+                                    UpdatedById = x.UpdatedById.ToString(),
+                                    BoardId = x.BoardId.ToString(),
+                                    CreatedById = x.CreatedById.ToString(),
+                                    ListId = x.ListId.ToString(),
+                                    Timer = x.Timer,
+                                    DueDate = x.DueDate,
+                                    UpdatedAt = x.UpdatedAt,
+                                    CreatedAt = x.CreatedAt})
+        .ToListAsync();
     return TypedResults.Ok(cards);
 }
 
