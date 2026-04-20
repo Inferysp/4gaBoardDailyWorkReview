@@ -4,6 +4,7 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import { TimerContext } from './TimerContext.jsx';
 import { DataContext } from './DataContext.jsx';
 import SearchForm from './components/search/SearchForm.jsx';
+import CountFilteredCards from './components/count/CountFilteredCards.jsx';
 
 function App() {
     const { timerSum, setTimerSum } = useContext(TimerContext);
@@ -75,6 +76,7 @@ function App() {
                     <div className="cardsbar">
                         <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
                         <SearchForm />
+                        <CountFilteredCards number="101" />
                         <p>Czas pracy: {timeSumPresentation}</p>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
