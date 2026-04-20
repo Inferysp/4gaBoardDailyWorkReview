@@ -7,6 +7,7 @@ import { DataContext } from '../../DataContext.jsx';
 
 function CollectionCardsYsp({ day, data }) {
     const { setTimerSum } = useContext(TimerContext);
+    const { setCardsNumber } = useContext(DataContext);
     const { setData } = useContext(DataContext);
 
     const [loading, setLoading] = useState(true);
@@ -24,6 +25,8 @@ function CollectionCardsYsp({ day, data }) {
 
                 const result = await response.json();
                 setData(result);
+                console.log(`Iloœæ kart ${result.length}`)
+                setCardsNumber(result.length);
 
             } catch (error) {
                 setError(error);

@@ -8,6 +8,7 @@ import CountFilteredCards from './components/count/CountFilteredCards.jsx';
 
 function App() {
     const { timerSum, setTimerSum } = useContext(TimerContext);
+    const { cardsNumber } = useContext(DataContext);
     const { data } = useContext(DataContext);
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [time, setTime] = useState(new Date().toLocaleString());
@@ -76,7 +77,7 @@ function App() {
                     <div className="cardsbar">
                         <DatePicker date={selectedDate} onDateChange={setSelectedDate} />
                         <SearchForm />
-                        <CountFilteredCards number="101" />
+                        <CountFilteredCards number={cardsNumber} />
                         <p>Czas pracy: {timeSumPresentation}</p>
                     </div>
                 <div className="grid grid-cols-1 gap-6">
