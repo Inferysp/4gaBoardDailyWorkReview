@@ -8,7 +8,7 @@ export default function DownBar({ authorId, lastChange, dueDate, updatedbyId }) 
     }
 
     return (
-        <div className="downbar">
+        <div className="downBar">
             <Author authorid={authorId} style={style} />
             <div className={`${style} flex-4`}>
                 {dueDate = null ? <p>due date</p> : dueDate }

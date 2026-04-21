@@ -21,8 +21,8 @@ export default function Timer({ timer, loading, error }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div className={`w-min-24 justify-self-end`}>
-            <p>Timer: {timer != null ? (timerr != null ? time : "") : "brak wpisu"}</p>
+        <div className="timerTopBar flex gap-x-1">
+            <p>Timer: </p><p className="strongText">{timer != null ? (timerr != null ? time : "") : "brak wpisu"}</p>
         </div>
     );
 

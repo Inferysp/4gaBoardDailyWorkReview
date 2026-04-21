@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function Project({ style, projectid }) {
+export default function Project({ projectid }) {
     const [project, setProject] = useState();
     const [error, setError] = useState();
     const [loading, setLoading] = useState();
@@ -31,8 +31,8 @@ export default function Project({ style, projectid }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div className={`${style}`} >
-            <p>Project: {project != null ? project.name : "Empty"}</p>
+        <div className="projectTopBar flex gap-x-1" >
+            <p>Project: </p><p className="strongText">{project != null ? project.name : "Empty"}</p>
         </div>
     )
 }
