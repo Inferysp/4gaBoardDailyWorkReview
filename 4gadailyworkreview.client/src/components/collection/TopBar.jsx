@@ -9,9 +9,6 @@ export default function TopBar({ boardId, listId, timer }) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    let style = "w-min-45 scheme-dark";
-    var boardName = "Empty";
-
     useEffect(() => {
         const fetchResults = async () => {
             try {
@@ -36,11 +33,11 @@ export default function TopBar({ boardId, listId, timer }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div className="topbar">
-            <Project style={style} projectid={data.projectId} />
-            <Board style={style} loading={loading} error={error} board={data} />
-            <List style={style} loading={loading} error={error} listid={listId} />
-            <Timer style={style} loading={loading} error={error} timer={timer} />
+        <div className="topBar">
+            <Project projectid={data.projectId} />
+            <Board loading={loading} error={error} board={data} />
+            <List loading={loading} error={error} listid={listId} />
+            <Timer loading={loading} error={error} timer={timer} />
         </div>
     )
 }

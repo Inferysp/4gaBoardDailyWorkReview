@@ -1,43 +1,75 @@
 @import "tailwindcss";
+p {
+    @apply text-sm text-wrap;
+}
+
+.strongText {
+    @apply text-sm font-bold;
+}
+
+.italicText {
+    @apply text-sm italic;
+}
+
+h2 {
+    @apply text-lg;
+}
+
 .app {
+/*    @apply static;*/
+    @apply max-lg:static;
 }
 
 .menubar {
-    @apply text-center content-center box-border z-0 top-0 h-20 bg-gradient-to-l from-transparent to-slate-800 divide-y-1 border-1;
+    @apply z-10 w-full text-center content-center box-border top-0 min-h-20 bg-gradient-to-l from-transparent to-slate-800 divide-y-1 border-1 max-xl:bg-green-400;
 }
 .body {
-    @apply bg-slate-800;
-}
-
-.footer {
-    @apply justify-items-center w-full bg-slate-900 text-white border-t-1 border-black;
+    @apply bg-slate-800 static flex;
 }
 
 .bodycolumn {
-    @apply mx-100 left-0 bg-slate-200 p-7 w-fit divide-y-1 border-1;
+    @apply xl:ml-160 xl:mr-50 max-sm:mx-5 max-xl:mx-20 max-xl:min-w-60 inline-block xl:max-w-[1000px] inline-full left-0 bg-slate-200 max-xl:p-1 xl:p-7 divide-y-1 border-1 ;
 }
 
+.footer {
+    @apply z-10 w-full static justify-items-center bg-slate-900 text-white border-t-1 border-black;
+
+} 
+
 .cardsbar {
-    @apply flex flex-row justify-between;
+    @apply max-xl:flex-wrap flex flex-row justify-between static;
 }
+
 .listcontainer {
     @apply min-h-screen flex flex-col;
 }
 
-.cardbox {
-    @apply bg-white mx-1 my-2 grid gap-y-3 divide-y-1 divide-solid border-1 w-fit;
+.cardBox {
+    @apply bg-white mx-1 my-2 grid gap-y-3 divide-y-1 divide-solid border-1;
 }
 
-.topbar {
-    @apply grid grid-cols-2 gap-2 pl-3 pr-15 py-2 shadow-sm mb-2;
+.topBar {
+    @apply grid grid-cols-2 gap-2 pl-3 pr-15 py-2 shadow-sm mb-2 max-xl:grid-cols-1 box-border static;
 }
 
-.boxcenter {
+.boardTopBar {
+    @apply text-wrap static;
+}
+
+.timerTopBar {
+    @apply static;
+}
+
+.boxCenter {
     @apply p-1 pl-7 mr-3 rounded-r-lg shadow-md;
 }
 
-.downbar {
-    @apply flex flex-row items-center p-1;
+.boxCenterTitle {
+    @apply text-lg;
+}
+
+.descriptionBoxCenter {
+    @apply text-wrap;
 }
 
 .button {
@@ -46,4 +78,11 @@
 
 .descriptionBox {
     @apply text-gray-600 text-sm pl-7;
+}
+
+.downBar {
+    @apply flex flex-row items-center p-1 max-xl:flex-wrap;
+}
+
+.searchForm {
 }

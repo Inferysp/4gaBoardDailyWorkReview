@@ -42,7 +42,7 @@ export default function SearchForm({ setSearchedData, input, setInput }) {
     if (loading) return <p>£adowanie...</p>;
 
     return (
-        <div className="searchform">
+        <div className="searchForm">
             <input placeholder="Szukaj..." type="text" value={input} onChange={handleClick} />
         </div>
     )

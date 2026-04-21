@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export default function List({ style, listid }) {
+export default function List({ listid }) {
     const [list, setList] = useState();
     const [error, setError] = useState();
     const [loading, setLoading] = useState();
@@ -34,8 +34,8 @@ export default function List({ style, listid }) {
     if (error) return <p>B³¹d: {error.message}</p>;
 
     return (
-        <div className={`${style}`}>
-            <p>List: {list != null ? list.name  : "Brak"}</p>
+        <div className="listTopBar flex gap-x-1">
+            <p>List:</p><p className="italicText">{list != null ? list.name  : "Brak"}</p>
         </div>
     )
 }
