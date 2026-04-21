@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { DataContext } from '../../DataContext.jsx';
 export default function SearchForm({ setSearchedData }) {
     const [input, setInput] = useState("");
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
+
+    const { setCardsNumber } = useContext(DataContext);
 
     const handleClick = (e) => {
             setInput(e.target.value)
@@ -21,6 +24,7 @@ export default function SearchForm({ setSearchedData }) {
 
                 console.log(`Iloœæ kart searchForm ${result.length}`);
                 setSearchedData(result);
+                setCardsNumber(result.length);
             } catch (error) {
                 setError(error);
             } finally {
