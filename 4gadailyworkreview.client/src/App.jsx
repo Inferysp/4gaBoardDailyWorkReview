@@ -15,6 +15,7 @@ function App() {
     const [selectedDate, setSelectedDate] = useState(new Date());
     const [time, setTime] = useState(new Date().toLocaleString());
     const [searchedData, setSearchedData] = useState(null);
+    const [inputSearch, setInputSearch] = useState('');
 
     let timeSumPresentation = "";
     let timerr = timerSum;
@@ -78,8 +79,8 @@ function App() {
             <div className="body">
                 <div className="bodycolumn">
                     <div className="cardsbar">
-                        <DatePicker date={selectedDate} onDateChange={(d) => { setSelectedDate(d); setSearchedData(null) } } />
-                        <SearchForm setSearchedData={setSearchedData} />
+                        <DatePicker date={selectedDate} onDateChange={(d) => { setSelectedDate(d); setSearchedData(null); setInputSearch(''); } } />
+                        <SearchForm setSearchedData={setSearchedData} input={inputSearch} setInput={setInputSearch} />
                         <CountFilteredCards number={cardsNumber} />
                         <p>Czas pracy: {timeSumPresentation}</p>
                     </div>

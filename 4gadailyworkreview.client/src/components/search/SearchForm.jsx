@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { DataContext } from '../../DataContext.jsx';
-export default function SearchForm({ setSearchedData }) {
-    const [input, setInput] = useState("");
+export default function SearchForm({ setSearchedData, input, setInput }) {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
 
